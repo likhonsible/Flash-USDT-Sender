@@ -25,7 +25,7 @@ Your donations drive innovation and progress. 💫
 
 ## Quick Donate 🌟
 
-- **Ethereum | Binance (ETH/BNB/ERC20/BEP2P):** `0x00fC876d03172279E04CC30E5edCE103c3d23C1A`
+- **Ethereum | Binance (ETH/BNB/ERC20/BEP20):** `0x00fC876d03172279E04CC30E5edCE103c3d23C1A`
 
 [🔗 Full Donation Details / Author](https://t.me/likhonsible)
 
@@ -38,7 +38,7 @@ Your donations drive innovation and progress. 💫
 ## 📩 Stay Connected
 
 - 💌 **Email:** [owner@likhonscripts.cloud](mailto:owner@likhonscripts.cloud)
-- 🤖 **Telegram:** [Join our Chat](https://t.me/likhonsible)
-- 🍃 **News Updates:** [Stay Updated](https://t.me/likhonsible)
+- 🤖 **Telegram:** [Join our Chat](https://t.me/ScriptsChats)
+- 🍃 **News Updates:** [Stay Updated](https://t.me/LikhonScripts)
 
 🙏 Thank You for Your Support and Belief in Our Vision! 💖
