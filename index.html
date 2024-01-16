@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRX-USDT Exchange Telegram Bot</title>
+</head>
+<body>
+    <h1>TRX-USDT Exchange Telegram Bot on TRC20 Blockchain</h1>
+    <p>This project is developed in Go language. It is primarily for reference purposes as it contains several bugs.</p>
+    
+    <h2>Important Notes:</h2>
+    <ul>
+        <li>Ensure to replace the parameters in the code starting with YOUR_, such as the Telegram Bot Token, Webhook URL, SSL certificate path, and listening address before use.</li>
+        <li>Make sure you have the Go environment installed. Use go get to install dependencies: <code>go get github.com/go-redis/redis</code> and <code>go get github.com/go-telegram-bot-api/telegram-bot-api</code>.</li>
+    </ul>
+
+    <h2>Compilation Tutorial:</h2>
+    <ol>
+        <li>Save the above code in a file named <code>main.go</code>.</li>
+        <li>Execute the command <code>go build -o bot main.go</code> in the terminal to compile and generate an executable file named <code>bot</code>.</li>
+    </ol>
+
+    <h2>Deployment Tutorial:</h2>
+    <ol>
+        <li>Prepare a server and upload the generated <code>bot</code> executable file to the server.</li>
+        <li>Configure the server's SSL certificate and Nginx reverse proxy according to your needs to ensure HTTPS access to the Webhook URL.</li>
+        <li>Execute <code>./bot</code> on the server to start the program. It will initiate an HTTP server and listen for Webhook callbacks.</li>
+        <li>Set up the Webhook in the Telegram Bot management interface. The Webhook URL should be your server's address in the format <code>https://your-domain.com/your-bot-token</code>, where <code>your-domain.com</code> is your server's domain, and <code>your-bot-token</code> is the Telegram Bot Token.</li>
+    </ol>
+
+    <p>After deployment, you can interact with the Bot through Telegram to perform USDT transfers and balance inquiries.</p>
+</body>
+</html>
