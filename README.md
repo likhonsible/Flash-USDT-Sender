@@ -48,6 +48,7 @@ Features List
 
 	•	For developers interested in testing or contributing to the project, please follow the donation procedure outlined above.
 	•	After donating, add your transaction details to the transactions.txt file.
+	•  Submit like (mail | hash)
 	•	Submit a pull request to the repository with your proposed changes or additions.
 
 - **Issues:** Share your ideas or report bugs.
