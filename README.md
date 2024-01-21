@@ -31,6 +31,25 @@ Your donations drive innovation and progress. 💫
 
 ## Engage & Contribute 🌐
 
+Features List
+
+	1.	Multi-Chain Support: Integration with all major blockchain networks, enabling transactions in Ethereum, Binance, and other ERC20/BEP20 tokens.
+	2.	Flash USDT Tools: Advanced tools for managing and transacting in USDT across different chains.
+	3.	Fixed Price Setting: A stable pricing structure set at $400, with no hidden or additional fees required.
+	4.	Developer Engagement: Opportunities for developers to contribute and test features. Requires a donation in the cryptocurrency of your choice.
+	5.	Transaction Tracking: Users can add their transaction details in a transactions.txt file and pull requests to the repository for updates or integration.
+	6.	Donation Address: Ethereum | Binance (ETH/BNB/ERC20/BEP20): 0x00fC876d03172279E04CC30E5edCE103c3d23C1A
+	7.	Contribution Guidelines: Detailed instructions for those who wish to contribute, either through code or donations.
+	8.	Comprehensive Documentation: Clear and thorough documentation for all features and tools.
+	9.	Community Support: Active community support for users and contributors, including a dedicated Telegram channel.
+	10.	Security Measures: Robust security protocols to ensure safe and secure transactions.
+
+ How to Contribute
+
+	•	For developers interested in testing or contributing to the project, please follow the donation procedure outlined above.
+	•	After donating, add your transaction details to the transactions.txt file.
+	•	Submit a pull request to the repository with your proposed changes or additions.
+
 - **Issues:** Share your ideas or report bugs.
 - **Pull Requests:** Contribute to our growth.
 - **Wiki:** Dive deep into our work.
