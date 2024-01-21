@@ -8,7 +8,7 @@ Welcome to the home of the **Flash USDT Sender Software**! This innovative tool 
 - **Download Flash USDT Sender Software + Free Activation Code**: Everything you need in one package. 📦
 
 ## Pricing 💲
-Each of these fantastic features is available for just **$350.00**. A small price for the efficiency and convenience you'll gain!
+Each of these fantastic features is available for just **$400.00**. A small price for the efficiency and convenience you'll gain!
 
 ## Get the Pro Version 💎
 Interested in more advanced features? DM us on Telegram for the Pro version of the source codes: [Contact on Telegram](https://t.me/likhonsible).
@@ -48,8 +48,8 @@ Features List
 
 	•	For developers interested in testing or contributing to the project, please follow the donation procedure outlined above.
 	•	After donating, add your transaction details to the transactions.txt file.
-	•  Submit like (mail | hash)
-	•	Submit a pull request to the repository with your proposed changes or additions.
+	•       Submit Like Blockchain Hash)
+	•	Submit a pull request to the repository we will do accept within few sec be sure with your mail address with your proposed changes or additions.
 
 - **Issues:** Share your ideas or report bugs.
 - **Pull Requests:** Contribute to our growth.
@@ -59,6 +59,6 @@ Features List
 
 - 💌 **Email:** [owner@likhonscripts.cloud](mailto:owner@likhonscripts.cloud)
 - 🤖 **Telegram:** [Join our Chat](https://t.me/ScriptsChats)
-- 🍃 **News Updates:** [Stay Updated](https://t.me/LikhonScripts)
+- 🍃 **Author:** [Stay Updated]([https://t.me/LikhonScripts](https://t.me/PikachuDirector))
 
 🙏 Thank You for Your Support and Belief in Our Vision! 💖
