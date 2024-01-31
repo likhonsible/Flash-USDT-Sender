@@ -1,0 +1,46 @@
+name: The Commit
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Run every minute
+  workflow_dispatch:
+
+jobs:
+  process_users:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Process Users
+        run: |
+          users=(
+            "cool.duck@qua.ck" "xianger94@gmail.com" "tldrbotgithub@gmail.com"
+            "dante9000@gmail.com" "schacon@gmail.com" "circleci.ossci@gmail.com"
+            "destinyitemmanager@gmail.com" "gnodet@gmail.com" "sampleAuthor@gmail.com"
+            "zhiweik@gmail.com" "kurmanov.work@gmail.com" "zuoge85@gmail.com"
+            "erik.dubois@gmail.com" "corre@gmail.com" "john@smith.org"
+            "bg7nyt@gmail.com" "3n1b.com@gmail.com" "cpyarger@gmail.com"
+            "avarab@gmail.com" "ada.lovelace@gmail.com"
+          )
+
+          for user in "${users[@]}"; do
+            # Set user configurations
+            git config --global user.name "Duck Quackers"
+            git config --global user.email "$user"
+
+            # Add star to the repository
+            curl -X PUT -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                 https://api.github.com/user/starred/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code
+
+            # Fork the repository
+            curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                 https://api.github.com/repos/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code/forks
+
+            # Wait for 3 seconds
+            sleep 3
+
+            # Generate and write random hash
+            echo "0x$(openssl rand -hex 32)" >> transactions.txt
+          done
