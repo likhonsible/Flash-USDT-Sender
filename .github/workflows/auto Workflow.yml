@@ -3,7 +3,9 @@ name: Auto Workflow
 on:
   schedule:
     - cron: '*/1 * * * *'  # Run every minute
+  on:
   workflow_dispatch:
+
 
 jobs:
   process_users:
