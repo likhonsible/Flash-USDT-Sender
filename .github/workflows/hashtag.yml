@@ -10,9 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2  # This step checks out the repository, initializing Git if needed.
+
     - name: Set Hashtags
       run: |
-        echo "btc flasher, crypto flasher, usdt flasher, trc20 usdt flash bot, usdt flash software, eth flasher, bsc flasher, bnb flasher, sol flasher, flash trading, crypto tools, flash bot, flash software" >> hashtags.txt
+        if [ ! -d .git ]; then
+          git init
+          git remote add origin "${{ github.repository_url }}"
+          git fetch
+          git checkout -b main
+        fi
+        
+        echo "btc flasher, crypto flasher, usdt flasher, trc20 usdt flash bot, usdt flash software, eth flasher, bsc flasher, bnb flasher, sol flasher, flash trading, crypto tools, flash bot, flash software, decentralized finance, blockchain tools, smart contract" >> hashtags.txt
         git add hashtags.txt
         git commit -m "Auto-update hashtags" || true
-        git push
+        git push origin main
