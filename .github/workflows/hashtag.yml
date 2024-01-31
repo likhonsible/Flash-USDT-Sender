@@ -1,0 +1,18 @@
+name: Auto Hashtags
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  auto_hashtags:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set Hashtags
+      run: |
+        echo "btc flasher, crypto flasher, usdt flasher, trc20 usdt flash bot, usdt flash software, eth flasher, bsc flasher, bnb flasher, sol flasher, flash trading, crypto tools, flash bot, flash software" >> hashtags.txt
+        git add hashtags.txt
+        git commit -m "Auto-update hashtags" || true
+        git push
