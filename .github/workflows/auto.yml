@@ -1,0 +1,6 @@
+workflow_run_id: $GITHUB_RUN_ID
+repository: $GITHUB_REPOSITORY
+workflow: $GITHUB_WORKFLOW
+event: $GITHUB_EVENT_NAME
+commit_sha: $GITHUB_SHA
+run_number: $GITHUB_RUN_NUMBER

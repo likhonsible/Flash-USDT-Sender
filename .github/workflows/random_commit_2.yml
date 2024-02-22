@@ -1,0 +1,27 @@
+name: Random Commit 2
+
+on:
+  schedule:
+    - cron: '*/5 22 * * *'
+  workflow_dispatch:
+  
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Make changes
+        run: 
+          echo "Random Commit made at $(date '+%Y-%m-%d %H:%M:%S')" > log.txt
+
+      - name: Commit and push if changed
+        run: |
+          git pull
+          git config --global user.email "likhonsible@outlook.com"
+          git config --global user.name "likhonsible"
+          git add -A
+          git commit -m "Daily update $(date '+%Y-%m-%d %H:%M:%S')"
+          git push

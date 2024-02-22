@@ -1,0 +1,76 @@
+# The following workflow provides an opinionated template you can customize for your own needs.
+#
+# If you are not an Octopus user, the "Push to Octopus", "Generate Octopus Deploy build information",
+# and "Create Octopus Release" steps can be safely deleted.
+#
+# To configure Octopus, set the OCTOPUS_API_TOKEN secret to the Octopus API key, and
+# set the OCTOPUS_SERVER_URL secret to the Octopus URL.
+#
+# Double check the "project" and "deploy_to" properties in the "Create Octopus Release" step
+# match your Octopus projects and environments.
+#
+# Get a trial Octopus instance from https://octopus.com/start
+
+name: Go Build
+'on':
+  workflow_dispatch: {}
+  push: {}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.17
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.15
+      with:
+        versionSpec: 5.x
+    - id: determine_version
+      name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.15
+      with:
+        additionalArguments: /overrideconfig mode=Mainline
+    - name: Install Octopus Deploy CLI
+      uses: OctopusDeploy/install-octopus-cli-action@v1
+      with:
+        version: latest
+    - name: Install Dependencies
+      run: go get ./...
+      shell: bash
+    - name: List Dependencies
+      run: go list -m all > dependencies.txt
+      shell: bash
+    - name: Collect Dependencies
+      uses: actions/upload-artifact@v2
+      with:
+        name: Dependencies
+        path: dependencies.txt
+    - name: List Dependency Updates
+      run: go list -u -m -f "{{if .Update}}{{.}}{{end}}" all > dependencyUpdates.txt
+      shell: bash
+    - name: Collect Dependency Updates
+      uses: actions/upload-artifact@v2
+      with:
+        name: Dependencies Updates
+        path: dependencyUpdates.txt
+    - name: Test
+      run: go install gotest.tools/gotestsum@latest; gotestsum --junitfile results.xml
+      shell: bash
+    - if: always()
+      name: Report
+      uses: dorny/test-reporter@v1
+      with:
+        name: Go Tests
+        path: results.xml
+        reporter: java-junit
+        fail-on-error: 'false'
+    - run: go build
+permissions:
+  id-token: write
+  checks: write
+  contents: write

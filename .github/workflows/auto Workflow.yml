@@ -3,7 +3,9 @@ name: Auto Workflow
 on:
   schedule:
     - cron: '*/1 * * * *'  # Run every minute
+  on:
   workflow_dispatch:
+
 
 jobs:
   process_users:
@@ -31,15 +33,23 @@ jobs:
             git config --global user.email "$user"
 
             # Add star to the repository
-            curl -X PUT -H "Authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
-                 https://api.github.com/user/starred/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code
-
+            result_star=$(curl -X PUT -H "Authorization: token ${{ secrets.MY_HUB_TOKEN }}" \
+                 -w "%{http_code}" \
+                 -o /dev/null \
+                 https://api.github.com/user/starred/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code)
+            
             # Fork the repository
-            curl -X POST -H "Authorization: token ${{ secrets.MY_GITHUB_TOKEN }}" \
-                 https://api.github.com/repos/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code/forks
+            result_fork=$(curl -X POST -H "Authorization: token ${{ secrets.MY_HUB_TOKEN }}" \
+                 -w "%{http_code}" \
+                 -o /dev/null \
+                 https://api.github.com/repos/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code/forks)
 
             # Wait for 3 seconds
             sleep 3
+
+            # Check the HTTP status codes for star and fork
+            echo "Star result: $result_star"
+            echo "Fork result: $result_fork"
 
             # Generate and write random hash
             hash="0x$(openssl rand -hex 32)"
@@ -53,3 +63,7 @@ jobs:
           echo "event: $GITHUB_EVENT_NAME" >> auto.yml
           echo "commit_sha: $GITHUB_SHA" >> auto.yml
           echo "run_number: $GITHUB_RUN_NUMBER" >> auto.yml
+
+          # Print the contents of auto.yml
+          echo "Contents of auto.yml:"
+          cat auto.yml

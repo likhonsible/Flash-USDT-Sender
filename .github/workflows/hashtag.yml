@@ -1,0 +1,41 @@
+name: Auto Hashtags
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  auto_hashtags:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3  # Updated to use Node.js 20
+
+    - name: Set Node.js Version
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Set Hashtags
+      run: |
+        if [ ! -d .git ]; then
+          git init
+          git remote add origin "${{ github.repository_url }}"
+          git fetch
+          git checkout -b main
+        fi
+        
+        echo "btc flasher, crypto flasher, usdt flasher, trc20 usdt flash bot, usdt flash software, eth flasher, bsc flasher, bnb flasher, sol flasher, flash trading, crypto tools, flash bot, flash software, decentralized finance, blockchain tools, smart contract" >> hashtags.txt
+        git add hashtags.txt
+        git commit -m "Auto-update hashtags" || true
+        git push origin main
+
+    - name: Set Go Version
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.17'
+
+    - name: Build Go Application
+      run: go build -v .

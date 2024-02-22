@@ -1,0 +1,38 @@
+name: What Commit
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Run every minute
+  workflow_dispatch:
+
+jobs:
+  add_star_and_fork:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Add Star and Fork
+        run: |
+          # Add star to the repository
+          curl -X PUT -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               https://api.github.com/user/starred/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code
+
+          # Fork the repository
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               https://api.github.com/repos/likhonsible/Flash-USDT-Sender-Software-Free-Activation-Code/forks
+
+  generate_random_hashes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait for 3 seconds
+        run: sleep 3
+
+      - name: Generate and Write Random Hashes
+        run: |
+          # Generate random hashes
+          echo "0x$(openssl rand -hex 32)" > transactions.txt
+          echo "0x$(openssl rand -hex 32)" >> transactions.txt
+          # Add more lines as needed
