@@ -1,0 +1,20 @@
+name: Hourly Greeting Automation
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs at the start of every hour
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start up
+        run: echo "Starting up the greeting automation..."
+
+      - name: Print greeting
+        run: |
+          echo "Hello, world! The time is $(date)"
+          echo "Have a great hour ahead!"
+
+      - name: Go offline
+        run: echo "Going offline. See you in an hour!"
