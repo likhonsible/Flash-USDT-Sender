@@ -1,0 +1,31 @@
+name: Scheduled and Manual Workflow
+
+# Controls when the action will run
+on:
+  # Manually triggered using the UI or API
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
+        type: string
+
+  # Automatically triggered every hour
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send greeting
+      run: echo "Hello ${{ inputs.name }}"
+
+    - name: Print hello every hour
+      run: echo "Hello, this is a scheduled greeting!"
+
+    - name: Stop this type every hour
+      if: github.event_name == 'schedule'
+      run: echo "Stopping after scheduled run"
