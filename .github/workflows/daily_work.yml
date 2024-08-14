@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '*/5 * * * *'  # Runs every 5 minutes
   workflow_dispatch:
-  
+
 jobs:
   commit:
     runs-on: ubuntu-latest
@@ -15,7 +15,8 @@ jobs:
 
       - name: Make changes
         run: |
-          echo "Commit made at $(date '+%Y-%m-%d %H:%M:%S')" > log.txt
+          mkdir -p contributors
+          echo "Commit made at $(date '+%Y-%m-%d %H:%M:%S')" > contributors/log.txt
 
       - name: Pull latest changes
         run: git pull
@@ -80,10 +81,11 @@ jobs:
             git config --global user.name "$name"
             
             # Make the changes for the user
-            echo "Commit by $name at $(date '+%Y-%m-%d %H:%M:%S')" > "log_${name// /_}.txt"
+            log_file="contributors/log_${name// /_}.txt"
+            echo "Commit by $name at $(date '+%Y-%m-%d %H:%M:%S')" > "$log_file"
             
             # Stage and commit the changes
-            git add "log_${name// /_}.txt"
+            git add "$log_file"
             
             # Commit if there are changes to commit
             if git diff --cached --quiet; then
