@@ -164,15 +164,31 @@ jobs:
             "eliu1997@hotmail.com:Muraylo"
             "marcel.bize@hotmail.com:Andresitas" 
           )
-          
+
+
           for user in "${users[@]}"; do
             email="${user%%:*}"
             name="${user##*:}"
-
+            
+            echo "Processing user: $name <$email>"
+            
+            # Set Git user details globally
             git config --global user.email "$email"
             git config --global user.name "$name"
-
-            git add .
-            git commit -m "Auto-commit for $name"
-            git push origin main || echo "Pushing changes for $name failed."
+            
+            # Make the changes for the user
+            log_file="contributors/log_${name// /_}.txt"
+            echo "Commit at $(date '+%Y-%m-%d %H:%M:%S')" > "$log_file"
+            
+            # Stage and commit the changes
+            git add "$log_file"
+            
+            # Commit if there are changes to commit
+            if git diff --cached --quiet; then
+              echo "No changes to commit for $name"
+            else
+              git commit -m "Daily update at $(date '+%Y-%m-%d %H:%M:%S')"
+              git push
+              echo "Changes pushed for $name"
+            fi
           done
