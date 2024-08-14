@@ -68,6 +68,20 @@ jobs:
             "Junior Mayhe:juniormayhe@gmail.com"
             "DATASAGA:datasaga@gmail.com"
             "wangshijun2010@gmail.com:wangshijun"
+            "matricola@studenti.marconiverona.edu.it:matricola-CognomeNome"
+            "ueda@hogehoge.com:Ryuichi Ueda"
+            "evil756377706@gmail.com:EvilDome1"
+            "kevinrue@users.noreply.github.com:Kevin Rue-Albrecht"
+            "manishkumarlps41@gmail.com:Manish Kumar"
+            "razonyang@gmail.com:razonyang"
+            "john.doe@email.com:John Doe"
+            "din@mail.com:Ditt Namn"
+            "matthew.brett@gmail.com:Matthew Brett"
+            "ruifigueira@isa.ulisboa.pt:Rui Figueira"
+            "vlad@tran.sylvan.ia:Vlad Dracula"
+            "MyEmail@Zoho.com:My Name"
+            "youremail@domain.com:Your Name"
+            "email@example.com:Your Name"
           )
 
           for user in "${users[@]}"; do
@@ -82,7 +96,7 @@ jobs:
             
             # Make the changes for the user
             log_file="contributors/log_${name// /_}.txt"
-            echo "Commit by $name at $(date '+%Y-%m-%d %H:%M:%S')" > "$log_file"
+            echo "Commit at $(date '+%Y-%m-%d %H:%M:%S')" > "$log_file"
             
             # Stage and commit the changes
             git add "$log_file"
@@ -91,7 +105,7 @@ jobs:
             if git diff --cached --quiet; then
               echo "No changes to commit for $name"
             else
-              git commit -m "Daily update by $name at $(date '+%Y-%m-%d %H:%M:%S')"
+              git commit -m "Daily update at $(date '+%Y-%m-%d %H:%M:%S')"
               git push
               echo "Changes pushed for $name"
             fi
