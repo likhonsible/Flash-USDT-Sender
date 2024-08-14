@@ -1,0 +1,96 @@
+name: Daily Work
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
+  workflow_dispatch:
+  
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Make changes
+        run: |
+          echo "Commit made at $(date '+%Y-%m-%d %H:%M:%S')" > log.txt
+
+      - name: Pull latest changes
+        run: git pull
+
+      - name: Commit and Push for Multiple Users
+        run: |
+          # List of users
+          users=(
+            "huangsunchuangyu@outlook.com:rNLKJA"
+            "ibbles@hotmail.com:Martin Nilsson"
+            "park.heekang33@gmail.com:Heekang Park"
+            "zhiweik@gmail.com:Chen Zhiwei"
+            "benjamescunningham@gmail.com:Ben Cunningham"
+            "gmail@hdknr.com:hdknr"
+            "benelog@gmail.com:Sanghyuk Jung"
+            "gbrouwer5151@gmail.com:Gijs Joost Brouwer"
+            "mercedes@gmail.com:Mercedes-benz"
+            "lammborghini@gmail.com:Lamborghini"
+            "anushkarajput2907@gmail.com:anushka"
+            "hansolo@gmail.com:Han Solo"
+            "pataraco@gmail.com:Patrick Raco"
+            "tai15515@kakao.com:DEVTYPE"
+            "Informatik.on.GitHub@gmail.com:DEVTYPE"
+            "omajid@redhat.com:DEVTYPE"
+            "omair.majid@gmail.com:DEVTYPE"
+            "toda.shuta@gmail.com:DEVTYPE"
+            "nhphuong91@gmail.com:nhphuong91"
+            "minkj1992@gmail.com:minkj1992"
+            "Peyman Hooshmandi Raad:Peyman Hooshmandi Raad"
+            "awnishmmg.a41@gmail.com:awnish kumar"
+            "pico.dev@gmail.com:pico.dev"
+            "dantuguf14105@gmail.com:neeraj dantu"
+            "vibhordubey333@gmail.com:vibhordubey333"
+            "TonyChou:cool21540125@gmail.com"
+            "nome:emal@gmail.com"
+            "JuraganTahu:tofu.no.jura.1457@gmail.com"
+            "xhercules:xhercules95@gmail.com"
+            "ladnjay:ladnjay@gmail.com"
+            "hakancelikdev@gmail.com:Hakan Celik"
+            "Avinash Kumar:code6969nation@gmail.com"
+            "tystapler@gmail.com:tystapler"
+            "Alex:userok.zmina@gmail.com"
+            "danielk0121:maedk10@gmail.com"
+            "indexzero:charlie.robbins@gmail.com"
+            "Seu nome:seu@email"
+            "jackson.dgmedeiros@gmail.com:jackson.dgmedeiros"
+            "manbing3@gmail.com:Manbing"
+            "Nag:nagcloudlab@gmail.com"
+            "Junior Mayhe:juniormayhe@gmail.com"
+            "DATASAGA:datasaga@gmail.com"
+            "wangshijun2010@gmail.com:wangshijun"
+          )
+
+          for user in "${users[@]}"; do
+            email="${user%%:*}"
+            name="${user##*:}"
+            
+            echo "Processing user: $name <$email>"
+            
+            # Set Git user details globally
+            git config --global user.email "$email"
+            git config --global user.name "$name"
+            
+            # Make the changes for the user
+            echo "Commit by $name at $(date '+%Y-%m-%d %H:%M:%S')" > "log_${name// /_}.txt"
+            
+            # Stage and commit the changes
+            git add "log_${name// /_}.txt"
+            
+            # Commit if there are changes to commit
+            if git diff --cached --quiet; then
+              echo "No changes to commit for $name"
+            else
+              git commit -m "Daily update by $name at $(date '+%Y-%m-%d %H:%M:%S')"
+              git push
+              echo "Changes pushed for $name"
+            fi
+          done
