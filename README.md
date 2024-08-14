@@ -27,7 +27,12 @@
     <td align="center"><img src="https://img.icons8.com/fluency/48/000000/update-left-rotation.png"/><br><b>Lifetime Updates</b></td>
     <td align="center"><img src="https://img.icons8.com/fluency/48/000000/compress.png"/><br><b>Compact Size</b></td>
     <td align="center"><img src="https://img.icons8.com/fluency/48/000000/multiple-devices.png"/><br><b>Multi-Platform</b></td>
-    <td align="center"><img src="https://pluspng.com/img-png/free-png-hd-world-globe-download-2400.png"/><br><b>Global Access</b></td>
+    <td align="center">
+    <img src="https://pluspng.com/img-png/free-png-hd-world-globe-download-2400.png" width="48" height="48"/>
+    
+
+    <b>Global Access</b>
+</td>
   </tr>
   <tr>
     <td align="center">Stay cutting-edge</td>
