@@ -1,0 +1,23 @@
+name: Hourly Update
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update README
+        run: |
+          echo "Last updated: $(date)" >> README.md
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Hourly update: $(date)"; git push)
